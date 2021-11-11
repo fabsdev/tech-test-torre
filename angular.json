@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "tech-test-torre"
+    }
+  },
+  "defaultProject": "tech-test-torre",
+  "cli": {
+    "analytics": false
+  }
 }
