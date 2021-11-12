@@ -1,0 +1,29 @@
+:host {
+  color: azure;
+}
+h2 {
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.user-content {
+  display: flex;
+  align-items: center;
+}
+.principal-card {
+  width: 100%;
+  margin-top: 75px;
+  min-height: calc(100% - 90px);
+  background-color: rgb(33, 37, 41);
+  border: 2px solid rgb(47, 53, 58);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+img {
+  margin-top: -60px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  box-shadow: 0 30px 40px rgb(0 0 0 / 30%), 0 20px 8px rgb(0 0 0 / 22%);
+}

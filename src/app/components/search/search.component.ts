@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -9,7 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SearchComponent implements OnInit {
   public formSubmitted = false;
   public usernameForm: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  public username: String;
+
+  constructor(private _router: Router, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.usernameForm = this.fb.group({
@@ -21,7 +24,8 @@ export class SearchComponent implements OnInit {
     if (this.usernameForm.invalid) {
       return;
     }
-    console.log(this.usernameForm.get('username')?.value);
+    this.username = this.usernameForm.get('username')?.value;
+    this.reloadComponent(this.username);
   }
 
   campoNoValido(campo: string): boolean {
@@ -30,5 +34,10 @@ export class SearchComponent implements OnInit {
     } else {
       return false;
     }
+  }
+  reloadComponent(username: String) {
+    this._router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this._router.onSameUrlNavigation = 'reload';
+    this._router.navigateByUrl(`/user/${username}`);
   }
 }

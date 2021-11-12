@@ -10,7 +10,7 @@ const routes: Routes = [
     component: PagesComponent,
     children: [
       { path: '', component: HomeComponent },
-      { path: 'user', component: UserComponent },
+      { path: 'user/:id', component: UserComponent },
       { path: '', redirectTo: '/', pathMatch: 'full' },
     ],
   },

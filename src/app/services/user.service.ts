@@ -10,7 +10,6 @@ const user_url = environment.user_url;
 export class UserService {
   constructor(private http: HttpClient) {}
   getUser(username: String) {
-    return this.http
-      .get<any>(`${user_url}/${username}`)
+    return this.http.get<any>(`${user_url}/${username}`);
   }
 }
