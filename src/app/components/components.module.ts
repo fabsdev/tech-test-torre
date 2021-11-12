@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 
 import { SearchComponent } from './search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +18,6 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     MatButtonModule,
     MatIconModule,
-    MatInputModule,
   ],
 })
 export class ComponentsModule {}

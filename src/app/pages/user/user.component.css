@@ -6,12 +6,23 @@ h2 {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+h5 {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+}
+p {
+  margin-bottom: 0;
+  color: white;
+}
 .user-content {
   display: flex;
   align-items: center;
 }
 .principal-card {
   width: 100%;
+  padding: 50px;
   margin-top: 75px;
   min-height: calc(100% - 90px);
   background-color: rgb(33, 37, 41);
@@ -22,8 +33,67 @@ h2 {
   align-items: center;
 }
 img {
-  margin-top: -60px;
+  margin-top: -100px;
   margin-bottom: 10px;
   border-radius: 50%;
   box-shadow: 0 30px 40px rgb(0 0 0 / 30%), 0 20px 8px rgb(0 0 0 / 22%);
+}
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card {
+  padding: 20px;
+  margin-right: 50px;
+  height: 100%;
+  background-color: rgb(47, 53, 58);
+  border: 1px solid greenyellow;
+}
+@media screen and (max-width: 576px) {
+  .cards-container {
+    flex-direction: column;
+  }
+  .card {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .principal-card{
+    padding: 10px;
+  }
+  .cards-container {
+    flex-direction: column;
+  }
+  .card {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .principal-card{
+    padding: 15px;
+  }
+  .cards-container {
+    flex-direction: column;
+  }
+  .card {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .principal-card{
+    padding: 20px;
+  }
+  .cards-container {
+    flex-direction: row;
+  }
+  .card {
+    margin-right: 20px;
+  }
 }

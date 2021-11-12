@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 import { SharedModule } from './../shared/shared.module';
 
@@ -11,6 +12,12 @@ import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [HomeComponent, UserComponent, PagesComponent],
-  imports: [CommonModule, RouterModule, ComponentsModule, SharedModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ComponentsModule,
+    SharedModule,
+    MatIconModule,
+  ],
 })
 export class PagesModule {}

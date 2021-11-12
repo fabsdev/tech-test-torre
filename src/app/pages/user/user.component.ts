@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
-import {
-  StrengthsInterface,
-  TypeofStrengthsInterface,
-} from './../../../interfaces/strengths.interface';
+import { StrengthsInterface } from './../../../interfaces/strengths.interface';
 import { UserService } from './../../services/user.service';
 
 @Component({
@@ -18,18 +15,11 @@ export class UserComponent implements OnInit {
   public picture: String = '';
   public username: String = '';
   public strengths: StrengthsInterface[] = [];
-  public newStrengths = <TypeofStrengthsInterface>{
-    master: [],
-    expert: [],
-    proficient: [],
-    novice: [],
-    noexp: [],
-  };
-  /*   public master: StrengthsInterface[] = [];
+  public master: StrengthsInterface[] = [];
   public expert: StrengthsInterface[] = [];
   public proficient: StrengthsInterface[] = [];
   public novice: StrengthsInterface[] = [];
-  public noexp: StrengthsInterface[] = []; */
+  public noexp: StrengthsInterface[] = [];
 
   constructor(
     private _router: Router,
@@ -49,8 +39,7 @@ export class UserComponent implements OnInit {
         this.name = res.person.name;
         this.picture = res.person.picture;
         this.strengths = res.strengths;
-        /* console.log(this.strengths); */
-        this.experience(this.strengths, this.newStrengths);
+        this.experience(this.strengths);
       },
       (err) => {
         Swal.fire({
@@ -66,22 +55,20 @@ export class UserComponent implements OnInit {
       }
     );
   }
-  experience(
-    strengths: StrengthsInterface[],
-    newStrengths: TypeofStrengthsInterface
-  ) {
-    strengths.filter((s) => {
-      if (s.proficiency === 'master') {
-        newStrengths.master.push(s);
-      } else if (s.proficiency === 'expert') {
-        newStrengths.expert.push(s);
-      } else if (s.proficiency === 'proficient') {
-        newStrengths.proficient.push(s);
-      } else if (s.proficiency === 'novice') {
-        newStrengths.novice.push(s);
+  experience(strengths: StrengthsInterface[]) {
+    for (let i = 0; i < strengths.length; i++) {
+      const element = strengths[i];
+      if (element.proficiency === 'master') {
+        this.master.push(element);
+      } else if (element.proficiency === 'expert') {
+        this.expert.push(element);
+      } else if (element.proficiency === 'proficient') {
+        this.proficient.push(element);
+      } else if (element.proficiency === 'novice') {
+        this.novice.push(element);
       } else {
-        newStrengths.noexp.push(s);
+        this.noexp.push(element);
       }
-    });
+    }
   }
 }
