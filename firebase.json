@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/tech-test-torre",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
