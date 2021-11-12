@@ -1,10 +1,54 @@
 .input-settings {
   display: flex;
-  margin-left: 5px;
-  margin-right: 5px;
+  flex-direction: row;
+  margin: 5px 5px 5px 0;
 }
-.input-settings input {
-  width: 100%;
+input {
+  background-color: black;
+  border-radius: 5px;
+  color: azure;
   height: 50px;
   margin-right: 10px;
+  outline: none;
+  width: 100vh;
+}
+input:focus::placeholder {
+  color: transparent;
+}
+input::placeholder {
+  color: rgba(192, 192, 192, 0.5);
+  transition: color 0.3s ease;
+}
+p {
+  color: red;
+}
+
+@media screen and (max-width: 576px) {
+  input {
+    width: 30vh;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  input {
+    width: 40vh;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  input {
+    width: 60vh;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  input {
+    width: 70vh;
+  }
+}
+
+@media (min-width: 1200px) {
+  input {
+    width: 90vh;
+  }
 }

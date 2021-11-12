@@ -1,4 +1,9 @@
-<div class="input-settings">
-  <input type="text" placeholder="Torrenegra" />
-  <button type="submit">Search</button>
-</div>
+<form autocomplete="off" [formGroup]="usernameForm" (ngSubmit)="sendUser()">
+  <div class="input-settings">
+    <input type="text" formControlName="username" placeholder="Torrenegra" />
+    <button mat-raised-button type="submit">
+      <mat-icon aria-hidden="false" aria-label="search">search</mat-icon>
+    </button>
+  </div>
+  <p *ngIf="campoNoValido('username')">Username is required.</p>
+</form>
