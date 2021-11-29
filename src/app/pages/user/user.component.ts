@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
-import { StrengthsInterface } from './../../../interfaces/strengths.interface';
+import {
+  StrengthsInterface,
+  SkillsInterface,
+} from './../../../interfaces/strengths.interface';
 import { UserService } from './../../services/user.service';
 
 @Component({
@@ -15,18 +18,21 @@ export class UserComponent implements OnInit {
   public picture: String = '';
   public username: String = '';
   public strengths: StrengthsInterface[] = [];
-  public master: StrengthsInterface[] = [];
-  public expert: StrengthsInterface[] = [];
-  public proficient: StrengthsInterface[] = [];
-  public novice: StrengthsInterface[] = [];
-  public noexp: StrengthsInterface[] = [];
+  public skillsInterests: SkillsInterface[] = [];
 
   constructor(
     private _router: Router,
     private route: ActivatedRoute,
     private _userService: UserService
-  ) {}
-
+  ) {
+    this.skillsInterests = [
+      { name: 'Expert', strengths: [] },
+      { name: 'Master', strengths: [] },
+      { name: 'Proficient', strengths: [] },
+      { name: 'Novice', strengths: [] },
+      { name: 'No experience, but interested', strengths: [] },
+    ];
+  }
   ngOnInit(): void {
     this.username = this.route.snapshot.params.id;
     if (this.username) {
@@ -36,10 +42,10 @@ export class UserComponent implements OnInit {
   getUser(username: String) {
     this._userService.getUser(username).subscribe(
       (res) => {
-        this.name = res.person.name;
-        this.picture = res.person.picture;
-        this.strengths = res.strengths;
-        this.experience(this.strengths);
+        this.name = res.user.name;
+        this.picture = res.user.picture;
+        this.strengths = res.user.strengths;
+        this.experience(this.strengths, this.skillsInterests);
       },
       (err) => {
         Swal.fire({
@@ -55,20 +61,29 @@ export class UserComponent implements OnInit {
       }
     );
   }
-  experience(strengths: StrengthsInterface[]) {
-    for (let i = 0; i < strengths.length; i++) {
-      const element = strengths[i];
-      if (element.proficiency === 'master') {
-        this.master.push(element);
-      } else if (element.proficiency === 'expert') {
-        this.expert.push(element);
-      } else if (element.proficiency === 'proficient') {
-        this.proficient.push(element);
-      } else if (element.proficiency === 'novice') {
-        this.novice.push(element);
-      } else {
-        this.noexp.push(element);
-      }
-    }
+  experience(
+    strengths: StrengthsInterface[],
+    skillsInterests: SkillsInterface[]
+  ) {
+    const SKILLS_INTERESTS = {
+      master(s) {
+        skillsInterests[0].strengths.push(s);
+      },
+      expert(s) {
+        skillsInterests[1].strengths.push(s);
+      },
+      proficient(s) {
+        skillsInterests[2].strengths.push(s);
+      },
+      novice(s) {
+        skillsInterests[3].strengths.push(s);
+      },
+      'no-experience-interested'(s) {
+        skillsInterests[4].strengths.push(s);
+      },
+    };
+    strengths.forEach((skill) => {
+      SKILLS_INTERESTS[skill.proficiency](skill);
+    });
   }
 }

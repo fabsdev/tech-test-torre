@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  user_url: 'https://torre.bio/api/bios',
+  user_url: 'http://localhost:3000/api',
 };
 
 /*

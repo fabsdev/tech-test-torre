@@ -1,38 +1,23 @@
 <app-navbar></app-navbar>
 <div class="container">
   <div class="user-content">
-    <div class="principal-card">
+    <div class="principal-card animate__animated animate__fadeInUp">
       <img [src]="picture" alt="Profile picture" width="150" height="150" />
       <h2>{{ name }}</h2>
       <h5>Skills and interest:</h5>
       <div class="cards-container">
-        <div class="card" *ngIf="master.length > 0">
-          <h5>Master</h5>
-          <p *ngFor="let item of master">
-            {{ item.name }}
-          </p>
-        </div>
-        <div class="card" *ngIf="expert.length > 0">
-          <h5>Expert</h5>
-          <p *ngFor="let item of expert">
-            {{ item.name }}
-          </p>
-        </div>
-        <div class="card" *ngIf="proficient.length > 0">
-          <h5>Proficient</h5>
-          <p *ngFor="let item of proficient">
-            {{ item.name }}
-          </p>
-        </div>
-        <div class="card" *ngIf="novice.length > 0">
-          <h5>Novice</h5>
-          <p *ngFor="let item of novice">
-            {{ item.name }}
-          </p>
-        </div>
-        <div class="card" *ngIf="noexp.length > 0">
-          <h5>No experience, but interested</h5>
-          <p *ngFor="let item of noexp">{{ item.name }}</p>
+        <div *ngFor="let skill of skillsInterests">
+          <div
+            class="card animate__animated animate__fadeInUp"
+            *ngIf="skill.strengths.length !== 0"
+          >
+            <h5>{{ skill.name }}</h5>
+            <ul>
+              <li *ngFor="let item of skill.strengths">
+                {{ item.name }}
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

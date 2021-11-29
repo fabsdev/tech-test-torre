@@ -1,5 +1,10 @@
+export interface SkillsInterface {
+  name: string;
+  strengths: StrengthsInterface[];
+}
+
 export interface StrengthsInterface {
   id: string;
-  proficiency: string;
   name: string;
+  proficiency: string;
 }

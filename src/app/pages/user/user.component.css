@@ -16,6 +16,11 @@ p {
   margin-bottom: 0;
   color: white;
 }
+ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin-bottom: 0;
+}
 .user-content {
   display: flex;
   align-items: center;
@@ -24,6 +29,7 @@ p {
   width: 100%;
   padding: 50px;
   margin-top: 75px;
+  margin-bottom: 20px;
   min-height: calc(100% - 90px);
   background-color: rgb(33, 37, 41);
   border: 2px solid rgb(47, 53, 58);
@@ -44,11 +50,11 @@ img {
   justify-content: space-between;
 }
 .card {
-  padding: 20px;
-  margin-right: 50px;
-  height: 100%;
   background-color: rgb(47, 53, 58);
   border: 1px solid greenyellow;
+  margin-right: 20px;
+  padding: 20px;
+  width: 250px;
 }
 @media screen and (max-width: 576px) {
   .cards-container {
@@ -61,7 +67,7 @@ img {
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
-  .principal-card{
+  .principal-card {
     padding: 10px;
   }
   .cards-container {
@@ -74,7 +80,7 @@ img {
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
-  .principal-card{
+  .principal-card {
     padding: 15px;
   }
   .cards-container {
@@ -87,7 +93,7 @@ img {
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  .principal-card{
+  .principal-card {
     padding: 20px;
   }
   .cards-container {
