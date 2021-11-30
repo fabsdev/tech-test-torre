@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  user_url: 'http://localhost:3000/api',
+  user_url: 'https://tech-test-torre-server.herokuapp.com/api',
   search_opportunities_url: 'https://search.torre.co/opportunities/_search?size=3',
   search_people_url: 'https://search.torre.co/people/_search?size=3',
 };

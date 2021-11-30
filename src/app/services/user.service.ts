@@ -2,6 +2,7 @@ import { StrengthsInterface } from './../../interfaces/strengths.interface';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 const user_url = environment.user_url;
 const search_opportunities_url = environment.search_opportunities_url;
@@ -24,12 +25,18 @@ export class UserService {
     });
   }
 
-  searchPeople(skillName: string, skillDetail: StrengthsInterface) {
-    return this.http.post(search_people_url, {
-      'skill/role': {
-        text: `${skillName}`,
-        proficiency: `${skillDetail}`,
-      },
-    });
+  searchPeople(skillName: string, skillDetail: string) {
+    return this.http
+      .post(search_people_url, {
+        'skill/role': {
+          text: `${skillName}`,
+          proficiency: `${skillDetail}`,
+        },
+      })
+      .pipe(
+        map((res: any) => {
+          return res.results;
+        })
+      );
   }
 }

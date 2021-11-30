@@ -1,0 +1,72 @@
+::ng-deep mat-dialog-container {
+  background-color: rgb(47, 53, 58) !important;
+  border: 1px solid rgb(113, 139, 74);
+}
+::ng-deep mat-dialog-container::-webkit-scrollbar {
+  width: 8px;
+  margin-right: 10px;
+}
+::ng-deep mat-dialog-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+::ng-deep mat-dialog-container::-webkit-scrollbar-thumb {
+  background-color: rgb(73, 78, 82);
+  border-radius: 20px;
+}
+mat-dialog-content {
+  color: azure;
+}
+h5 {
+  text-align: center;
+  font-weight: 600;
+}
+p {
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 14px;
+}
+p span {
+  font-weight: 600;
+}
+.detail-proficiency p:first-child {
+  margin-right: 5px;
+}
+.detail-proficiency {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.loading {
+  text-align: center;
+}
+.card {
+  padding: 10px;
+  background-color: rgb(73, 78, 82);
+  border: 1px solid grey;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid dark;
+  margin-right: 10px;
+}
+.info-person {
+  display: block;
+}
+.info-person p {
+  text-align: start;
+}
+.info-person p:first-child {
+  font-weight: 600;
+  font-size: 15px;
+}
+.info-person p:last-child {
+  font-size: 12px;
+  font-style: italic;
+}

@@ -18,6 +18,7 @@ import {
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
+  public subjectId: String = '';
   public name: String = '';
   public picture: String = '';
   public username: String = '';
@@ -51,6 +52,7 @@ export class UserComponent implements OnInit {
   getUser(username: String) {
     this._userService.getUser(username.toString()).subscribe(
       (res) => {
+        this.subjectId = res.user.subjectId;
         this.name = res.user.name;
         this.picture = res.user.picture;
         this.strengths = res.user.strengths;
@@ -95,9 +97,16 @@ export class UserComponent implements OnInit {
       SKILLS_INTERESTS[skill.proficiency](skill);
     });
   }
-  openDialog(skillDetail: string): void {
+  openDialog(skillDetail: string, icon: string): void {
     const dialogRef = this.dialog.open(DialogDetailsSkillComponent, {
-      data: { username: this.username, skillDetail },
+      data: {
+        subjectId: this.subjectId,
+        username: this.username,
+        skillDetail,
+        icon,
+      },
+      height: '450px',
+      width: '350px',
     });
     /* dialogRef.afterClosed().subscribe((res) => {
       console.log(res);
