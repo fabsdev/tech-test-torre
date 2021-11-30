@@ -1,20 +1,23 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container-fluid">
   <div class="user-content">
     <div class="principal-card animate__animated animate__fadeInUp">
       <img [src]="picture" alt="Profile picture" width="150" height="150" />
       <h2>{{ name }}</h2>
-      <h5>Skills and interest:</h5>
+      <h4>Skills and interest:</h4>
       <div class="cards-container">
         <div *ngFor="let skill of skillsInterests">
           <div
             class="card animate__animated animate__fadeInUp"
             *ngIf="skill.strengths.length !== 0"
           >
-            <h5>{{ skill.name }}</h5>
+            <div class="groupname-title-skills">
+              <span class="material-icons"> {{ skill.icon }} </span>
+              <h5>{{ skill.name }}</h5>
+            </div>
             <ul>
               <li *ngFor="let item of skill.strengths">
-                {{ item.name }}
+                <b (click)="openDialog(skill.name)"> {{ item.name }}</b>
               </li>
             </ul>
           </div>

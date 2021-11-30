@@ -1,5 +1,6 @@
 /* FONTS */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap");
+
 /* font-family: 'Poppins', sans-serif; */
 * {
   box-sizing: border-box;
@@ -15,4 +16,14 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.overlay {
+  align-items: center;
+  background-color: rgba(36, 36, 36, 0.8);
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
 }

@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+
+import { UserService } from './../../services/user.service';
+
+import { DialogDetailsSkillComponent } from './../../shared/dialog-details-skill/dialog-details-skill.component';
 
 import {
   StrengthsInterface,
   SkillsInterface,
 } from './../../../interfaces/strengths.interface';
-import { UserService } from './../../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -23,14 +27,19 @@ export class UserComponent implements OnInit {
   constructor(
     private _router: Router,
     private route: ActivatedRoute,
-    private _userService: UserService
+    private _userService: UserService,
+    public dialog: MatDialog
   ) {
     this.skillsInterests = [
-      { name: 'Expert', strengths: [] },
-      { name: 'Master', strengths: [] },
-      { name: 'Proficient', strengths: [] },
-      { name: 'Novice', strengths: [] },
-      { name: 'No experience, but interested', strengths: [] },
+      { name: 'Expert', icon: 'self_improvement', strengths: [] },
+      { name: 'Master', icon: 'directions_run', strengths: [] },
+      { name: 'Proficient', icon: 'directions_walk', strengths: [] },
+      { name: 'Novice', icon: 'emoji_people', strengths: [] },
+      {
+        name: 'No experience, but interested',
+        icon: 'accessibility_new',
+        strengths: [],
+      },
     ];
   }
   ngOnInit(): void {
@@ -40,7 +49,7 @@ export class UserComponent implements OnInit {
     }
   }
   getUser(username: String) {
-    this._userService.getUser(username).subscribe(
+    this._userService.getUser(username.toString()).subscribe(
       (res) => {
         this.name = res.user.name;
         this.picture = res.user.picture;
@@ -85,5 +94,13 @@ export class UserComponent implements OnInit {
     strengths.forEach((skill) => {
       SKILLS_INTERESTS[skill.proficiency](skill);
     });
+  }
+  openDialog(skillDetail: string): void {
+    const dialogRef = this.dialog.open(DialogDetailsSkillComponent, {
+      data: { username: this.username, skillDetail },
+    });
+    /* dialogRef.afterClosed().subscribe((res) => {
+      console.log(res);
+    }); */
   }
 }

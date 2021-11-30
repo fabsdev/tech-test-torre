@@ -6,11 +6,16 @@ h2 {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+h4 {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 h5 {
+  color: white;
   font-size: 14px;
   font-weight: 600;
-  text-align: center;
-  color: white;
+  margin-bottom: 0;
 }
 p {
   margin-bottom: 0;
@@ -20,6 +25,36 @@ ul {
   list-style-type: none;
   padding-inline-start: 0;
   margin-bottom: 0;
+  max-height: 420px;
+  overflow-y: auto;
+}
+ul::-webkit-scrollbar {
+  width: 8px;
+}
+ul::-webkit-scrollbar-track {
+  background: transparent;
+}
+ul::-webkit-scrollbar-thumb {
+  background-color: rgb(73, 78, 82);
+  border-radius: 20px;
+}
+li {
+  padding: 10px;
+  width: 100%;
+}
+li:hover {
+  border: 1px solid rgb(69, 70, 71);
+  border-radius: 15px;
+  background-color: rgb(73, 78, 82);
+  cursor: pointer;
+  user-select: none;
+  width: fit-content;
+}
+img {
+  margin-top: -100px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  box-shadow: 0 30px 40px rgb(0 0 0 / 30%), 0 20px 8px rgb(0 0 0 / 22%);
 }
 .user-content {
   display: flex;
@@ -38,12 +73,6 @@ ul {
   flex-direction: column;
   align-items: center;
 }
-img {
-  margin-top: -100px;
-  margin-bottom: 10px;
-  border-radius: 50%;
-  box-shadow: 0 30px 40px rgb(0 0 0 / 30%), 0 20px 8px rgb(0 0 0 / 22%);
-}
 .cards-container {
   display: flex;
   flex-direction: row;
@@ -54,13 +83,20 @@ img {
   border: 1px solid greenyellow;
   margin-right: 20px;
   padding: 20px;
-  width: 250px;
+  width: 300px;
+}
+.groupname-title-skills {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 @media screen and (max-width: 576px) {
   .cards-container {
     flex-direction: column;
   }
   .card {
+    width: 100%;
     margin-right: 0;
     margin-bottom: 20px;
   }
@@ -74,6 +110,7 @@ img {
     flex-direction: column;
   }
   .card {
+    width: 100%;
     margin-right: 0;
     margin-bottom: 20px;
   }
@@ -87,6 +124,7 @@ img {
     flex-direction: column;
   }
   .card {
+    width: 100%;
     margin-right: 0;
     margin-bottom: 20px;
   }
@@ -100,6 +138,7 @@ img {
     flex-direction: row;
   }
   .card {
+    width: auto;
     margin-right: 20px;
   }
 }

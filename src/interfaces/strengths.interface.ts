@@ -1,5 +1,6 @@
 export interface SkillsInterface {
   name: string;
+  icon: string;
   strengths: StrengthsInterface[];
 }
 
