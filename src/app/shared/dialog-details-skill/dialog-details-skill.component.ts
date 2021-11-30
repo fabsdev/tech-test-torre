@@ -24,21 +24,13 @@ export class DialogDetailsSkillComponent implements OnInit {
       username: string;
       skillDetail: StrengthsInterface;
       icon: string;
-    }
+    } // Object that will receive the params from user component
   ) {}
 
   ngOnInit(): void {
     this.searchPeople();
-    console.log(this.data.subjectId);
   }
-
-  searchOpportunitties() {
-    this._userService
-      .searchOpportunities(this.data.username)
-      .subscribe((res) => {
-        console.log(res);
-      });
-  }
+  //search people in Torre who has the skill selected
   searchPeople() {
     this._userService
       .searchPeople(
@@ -47,14 +39,10 @@ export class DialogDetailsSkillComponent implements OnInit {
       )
       .subscribe((res: any) => {
         this.arrayPeopleSameSkill = res;
-        console.log(
-          this.arrayPeopleSameSkill.forEach((res) => {
-            res.subjectId;
-          })
-        );
         this.loading = false;
       });
   }
+  //close Dialog
   onClick() {
     this.dialogRef.close();
   }

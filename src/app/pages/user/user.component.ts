@@ -59,6 +59,7 @@ export class UserComponent implements OnInit {
         this.experience(this.strengths, this.skillsInterests);
       },
       (err) => {
+        //if an user doesn't exist will be send to the homepage
         Swal.fire({
           position: 'center',
           icon: 'error',
@@ -76,6 +77,7 @@ export class UserComponent implements OnInit {
     strengths: StrengthsInterface[],
     skillsInterests: SkillsInterface[]
   ) {
+    //Object instead an if clause to store each stregth in the correct group.
     const SKILLS_INTERESTS = {
       master(s) {
         skillsInterests[0].strengths.push(s);
@@ -97,6 +99,7 @@ export class UserComponent implements OnInit {
       SKILLS_INTERESTS[skill.proficiency](skill);
     });
   }
+  //Dialog that will show the details of an user
   openDialog(skillDetail: string, icon: string): void {
     const dialogRef = this.dialog.open(DialogDetailsSkillComponent, {
       data: {
@@ -108,8 +111,5 @@ export class UserComponent implements OnInit {
       height: '450px',
       width: '350px',
     });
-    /* dialogRef.afterClosed().subscribe((res) => {
-      console.log(res);
-    }); */
   }
 }
