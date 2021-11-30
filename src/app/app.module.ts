@@ -1,13 +1,14 @@
-import { SharedModule } from './shared/shared.module';
-import { PagesModule } from './pages/pages.module';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {} from '@angular/material/button';
+
+import { InterceptorService } from './services/interceptor.service';
+
+import { PagesModule } from './pages/pages.module';
+import { SharedModule } from './shared/shared.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,9 @@ import {} from '@angular/material/button';
     SharedModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

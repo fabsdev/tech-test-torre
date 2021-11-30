@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { NavbarComponent } from './navbar/navbar.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
-  declarations: [NavbarComponent],
-  exports: [NavbarComponent],
+  declarations: [NavbarComponent, SpinnerComponent],
+  exports: [NavbarComponent, SpinnerComponent],
   imports: [CommonModule, RouterModule, ComponentsModule],
 })
 export class SharedModule {}
